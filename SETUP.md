@@ -31,19 +31,34 @@ Follow these steps to get your Pathology Lab Web App up and running:
 3. In the **Admin Access Code** field, enter the secret code: `VEDANT_ADMIN_2026`.
 4. Click Create Account. You will automatically be granted admin privileges and can access the `/admin` dashboard.
 
-## 5. Deployment
-- Push your code to GitHub.
-- Import the repository into [Vercel](https://vercel.com).
-- Add the environment variables from your `.env.local` to the Vercel project settings.
-- Deploy!
+## 5. Deployment (Cloudflare Pages)
 
-### Rebuilding on Vercel
-If your build fails or you push new changes:
-1. Go to your project in the [Vercel Dashboard](https://vercel.com/dashboard).
-2. Go to the **Deployments** tab.
-3. Find the latest deployment.
-4. Click the three dots `...` and select **Redeploy**.
-5. Ensure "Use existing Build Cache" is unchecked if you want a completely fresh build.
+### 1. Prepare for Cloudflare
+- Ensure you have a [Cloudflare Account](https://dash.cloudflare.com/sign-up).
+- The project includes `wrangler.toml` and `open-next.config.ts` for Cloudflare compatibility.
+- Push your latest code changes to GitHub.
+
+### 2. Connect to Cloudflare Pages
+1. In the Cloudflare Dashboard, go to **Workers & Pages** > **Create application** > **Pages** > **Connect to Git**.
+2. Select your repository.
+3. In the **Build settings** set:
+   - **Framework preset**: `None` (We use OpenNext).
+   - **Build command**: `npm run pages:build`
+   - **Build output directory**: `.open-next`
+4. Under **Environment variables**, add:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+   SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
+   ```
+
+### 3. Critical Configuration (MUST DO)
+1. After the initial (likely failed) build, go to **Settings** > **Functions** > **Compatibility Flags**.
+2. Add the `nodejs_compat` flag to both **Production** and **Preview**.
+3. Go back to the **Deployments** tab and click **Retry Deployment**.
+
+### 4. Shorter URL
+Your app will be available at `your-project-name.pages.dev`. You can change the project name in Cloudflare settings to make the URL even shorter.
 
 ## 6. WhatsApp Notifications
 - Currently, the app provides a manual "Update on WhatsApp" button for patients.
