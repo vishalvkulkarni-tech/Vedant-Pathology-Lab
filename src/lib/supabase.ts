@@ -5,8 +5,9 @@ export const createClient = () => {
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!supabaseUrl || !supabaseAnonKey) {
-    console.error('Supabase environment variables are missing!');
-    // Return a dummy client or throw a descriptive error that we can catch
+    console.error('CRITICAL: Supabase environment variables are missing! Authentication and data fetching will fail.');
+  } else {
+    console.log('Supabase client initialized with URL:', supabaseUrl);
   }
 
   return createBrowserClient(
