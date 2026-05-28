@@ -1,22 +1,7 @@
 name = "vpl1"
-main = ".open-next/worker.js"
 compatibility_date = "2024-11-18"
 compatibility_flags = ["nodejs_compat"]
 
-# For Cloudflare Pages & Workers Sites fallback
-[site]
-bucket = ".open-next/assets"
-
-# For Cloudflare Workers Build system
 [build]
-command = "npm run pages:build"
-path = ".open-next"
-
-# For modern Cloudflare Smart Placement
-[placement]
-mode = "smart"
-
-[vars]
-NODE_VERSION = "22"
-NEXT_VERSION = "15"
-# Fallback vars can be added here if needed
+command = "npm run build"
+path = ".next"

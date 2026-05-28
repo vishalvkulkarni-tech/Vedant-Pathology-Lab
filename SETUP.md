@@ -42,9 +42,9 @@ Follow these steps to get your Pathology Lab Web App up and running:
 1. In the Cloudflare Dashboard, go to **Workers & Pages** > **Create application** > **Pages** > **Connect to Git**.
 2. Select your repository.
 3. In the **Build settings** set:
-   - **Framework preset**: `None` (We use OpenNext).
-   - **Build command**: `npm run pages:build`
-   - **Build output directory**: `.open-next`
+   - **Framework preset**: `Next.js`
+   - **Build command**: `npm run build`
+   - **Build output directory**: `.next`
 4. Under **Environment variables**, add:
    ```env
    NEXT_PUBLIC_SUPABASE_URL=your-supabase-url

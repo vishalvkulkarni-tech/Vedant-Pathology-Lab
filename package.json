@@ -6,8 +6,6 @@
     "clean": "node -e \"const fs = require('fs'); fs.rmSync('.next', { recursive: true, force: true });\"",
     "dev": "npm run clean && next dev",
     "build": "npm run clean && next build",
-    "pages:build": "opennextjs-cloudflare build",
-    "pages:deploy": "npm run pages:build && wrangler pages deploy .open-next",
     "start": "next start",
     "lint": "eslint"
   },
