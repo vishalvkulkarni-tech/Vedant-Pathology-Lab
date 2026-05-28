@@ -1,4 +1,4 @@
-name = "vpl"
+name = "vpl1"
 main = ".open-next/worker.js"
 compatibility_date = "2024-11-18"
 compatibility_flags = ["nodejs_compat"]
