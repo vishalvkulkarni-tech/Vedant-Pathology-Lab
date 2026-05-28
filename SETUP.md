@@ -37,6 +37,14 @@ Follow these steps to get your Pathology Lab Web App up and running:
 - Add the environment variables from your `.env.local` to the Vercel project settings.
 - Deploy!
 
+### Rebuilding on Vercel
+If your build fails or you push new changes:
+1. Go to your project in the [Vercel Dashboard](https://vercel.com/dashboard).
+2. Go to the **Deployments** tab.
+3. Find the latest deployment.
+4. Click the three dots `...` and select **Redeploy**.
+5. Ensure "Use existing Build Cache" is unchecked if you want a completely fresh build.
+
 ## 6. WhatsApp Notifications
 - Currently, the app provides a manual "Update on WhatsApp" button for patients.
 - For fully automated background notifications, you can integrate the Meta Cloud API or Twilio API within the `orders` insertion logic in `BookingForm.tsx`.

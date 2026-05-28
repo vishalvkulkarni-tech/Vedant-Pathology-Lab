@@ -51,7 +51,7 @@ export default function SettingsManager() {
     for (const update of updates) {
       const { error } = await supabase
         .from('settings')
-        .upsert(update, { onConflict: 'key' });
+        .upsert(update as any, { onConflict: 'key' });
       if (error) {
         alert(`Error saving ${update.key}: ${error.message}`);
         break;
